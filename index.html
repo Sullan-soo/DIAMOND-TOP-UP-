@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#10121b">
+<title>FF GLORY | Cyber Control Panel</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="network-bg" aria-hidden="true"></div><div class="sound-toggle" title="Sound is muted">🔇</div>
+<main class="app-shell">
+  <header class="topbar">
+    <a class="brand" href="#"><span class="logo">⚡</span><span>FF <b>GLORY</b></span></a>
+    <button id="logoutBtn" class="logout hidden">LOG OUT ↗</button>
+  </header>
+
+  <section id="loginView" class="login-view">
+    <div class="login-card">
+      <div class="brand login-brand"><span class="logo">⚡</span><span>FF <b>GLORY</b></span></div>
+      <h1>WELCOME BACK</h1>
+      <p class="subheading">Sign in to your Cyber Control Panel.</p>
+      <form id="loginForm">
+        <label for="username">USERNAME</label><input id="username" autocomplete="username" required maxlength="24" aria-label="Username">
+        <label for="password">PASSWORD</label><input id="password" type="password" autocomplete="current-password" required minlength="4" aria-label="Password">
+        <p id="loginError" class="error"></p>
+        <button class="gradient-button" type="submit">LOGIN</button>
+      </form>
+      <p class="create-line">New here? <button id="createAccount" class="link-button">Create account</button></p>
+      <p class="demo-note">DEMO PREVIEW · NO REAL ACCOUNT</p>
+    </div>
+  </section>
+
+  <section id="dashboardView" class="hidden">
+    <header class="dashboard-header">
+      <button class="hamburger" id="menuBtn" aria-label="Open menu">☰</button>
+      <h2>BOT CONTROL<br>PANEL</h2>
+      <div class="header-actions"><button id="walletBtn" aria-label="Wallet">💰</button><button class="sound-small" aria-label="Muted">🔊</button></div>
+    </header>
+    <aside id="sideMenu" class="side-menu hidden">
+      <button data-scroll="welcomeCard">Home</button><button data-scroll="fundsCard">Add Funds</button><button data-scroll="options">Options</button><button data-scroll="activityCard">Recent Activity</button><button id="sideLogout">Log out</button>
+    </aside>
+    <section class="welcome-card glass" id="welcomeCard">
+      <p class="eyebrow">CYBERNETIC COMMAND</p>
+      <h1>HELLO, <span id="helloName">PLAYER</span></h1>
+      <p>Free Fire diamonds, UID likes and wallet top-ups, all from one neon control center.</p>
+    </section>
+    <section class="funds-card glass" id="fundsCard">
+      <h2>ADD FUNDS</h2><p>How much do you want to add to your game account?</p>
+      <div class="amount-row"><button class="amount" data-amount="200">₹200</button><button class="amount" data-amount="500">₹500</button><button class="amount" data-amount="1000">₹1000</button></div>
+      <label for="amountInput">AMOUNT (₹)</label><input id="amountInput" type="number" min="1" max="100000" placeholder="Enter amount" inputmode="numeric">
+      <button id="continueBtn" class="gradient-button">CONTINUE</button><p id="topupMessage" class="notice">Demo preview only — no payment will be processed.</p>
+    </section>
+    <section class="stats-grid">
+      <article class="stat glass"><span>Bot Status</span><strong class="online">ONLINE</strong></article>
+      <article class="stat glass"><span>Servers</span><strong>24</strong></article>
+      <article class="stat glass"><span>Commands Today</span><strong>1,482</strong></article>
+      <article class="stat glass"><span>Latency</span><strong>28ms</strong></article>
+    </section>
+    <section class="options-section" id="options"><p class="eyebrow">OPTIONS</p>
+      <div class="options-grid">
+        <button class="option-card cyan" data-feature="Diamond Top-Up"><span class="option-icon">💎</span><b>Diamond Top-Up</b><small>Buy diamonds and passes</small></button>
+        <button class="option-card pink" data-feature="Send Likes"><span class="option-icon">👍</span><b>Send Likes</b><small>Boost a UID profile</small></button>
+        <button class="option-card teal" data-feature="My Orders"><span class="option-icon">🧾</span><b>My Orders</b><small>Payment history</small></button>
+        <button class="option-card orange" data-feature="Offers"><span class="option-icon">🎁</span><b>Offers</b><small>Cheaper packs</small></button>
+        <button class="option-card purple" data-feature="Bot Status"><span class="option-icon">🤖</span><b>Bot Status</b><small>Start, stop, restart</small></button>
+        <button class="option-card gold" data-feature="FF Glory"><span class="option-icon">🏆</span><b>FF Glory</b><small>2 and 4 lakh packs</small></button>
+        <button class="option-card violet" data-feature="Preferences"><span class="option-icon">🎛️</span><b>Preferences</b><small>Sound and look</small></button>
+        <button class="option-card blue" data-feature="Profile"><span class="option-icon">👤</span><b>Profile</b><small>Your account</small></button>
+        <button class="option-card lime" data-feature="Support"><span class="option-icon">💬</span><b>Support</b><small>Help and FAQ</small></button>
+      </div>
+    </section>
+    <section class="activity-card glass" id="activityCard"><h2>RECENT ACTIVITY</h2>
+      <div class="activity-row"><span>✅ System initialized</span><small>Now</small></div>
+      <div class="activity-row"><span>💎 Top-up gateway</span><small class="online">Online</small></div>
+    </section>
+    <footer>FF GLORY CYBER CONTROL PANEL · DEMO</footer>
+  </section>
+</main>
+<dialog id="paymentDialog" class="payment-dialog">
+  <button id="closePayment" class="close" aria-label="Close">×</button>
+  <p class="eyebrow">UPI PAYMENT</p>
+  <h2>SCAN & PAY</h2>
+  <p class="payment-amount">Amount: <strong id="paymentAmount">₹0</strong></p>
+  <img src="payment-qr.jpg" alt="Provided UPI payment QR code" class="payment-qr">
+  <p class="payment-warning">Confirm the recipient name and amount in your UPI app before paying. This static QR may not auto-fill the amount.</p>
+  <button id="paymentDone" class="gradient-button">CLOSE</button>
+</dialog>
+<dialog id="featureDialog"><button id="closeDialog" class="close">×</button><p class="eyebrow">FF GLORY</p><h2 id="dialogTitle">Feature</h2><p id="dialogText">Demo screen only.</p><button id="dialogOk" class="gradient-button">OK</button></dialog>
+<script src="app.js"></script>
+</body></html>
